@@ -1,31 +1,11 @@
 $(function() {
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
 
-    // 指定图表的配置项和数据
-    var option = {
-        title: {
-            text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        legend: {
-            data: ['销量']
-        },
-        xAxis: {
-            data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-        },
-        yAxis: {},
-        series: [{
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20]
-        }]
-    };
+    // 初始化左侧顶部柱状图
+    setLeftPie();
+    //顶部左侧柱状图
+    setleftBar();
 
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
-
-    let layoutHeight = parseInt(document.documentElement.clientHeight * 0.35 - 18);
+    let layoutHeight = parseInt(document.documentElement.clientHeight * 0.25 - 18);
     //底部表格
     layui.use('table', function() {
         var table = layui.table;
@@ -58,4 +38,103 @@ $(function() {
         });
 
     });
+
+
+
+    //顶部 左侧饼状图
+    function setLeftPie() {
+        var data = {
+            dataAge: [{
+                name: '中国移动',
+                value: '150'
+            }, {
+                name: '中国联通',
+                value: '120'
+            }, {
+                name: '中国电信',
+                value: '122'
+            }, {
+                name: '其他',
+                value: '42'
+            }]
+        };
+        option = {
+            title: {
+                text: '1258',
+                subtext: '总数量',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 18,
+                    lineHeight: 10,
+                    fontWeight: '600',
+                    color: '#5bafff'
+                },
+                subtextStyle: {
+                    color: '#000000',
+                    fontSize: 12,
+                    align: 'right'
+                },
+            },
+            tooltip: {
+                trigger: 'item',
+                formatter: "{b}: {c}<br/>{d}%"
+            },
+            color: ['#5bafff', '#ff9d9f', '#f4da5e', '#8dc873'],
+            series: [{
+                type: 'pie',
+                center: ['center', 'center'],
+                radius: ['50%', '65%'],
+                labelLine: {
+                    normal: {
+                        length: 1,
+                        length2: 10,
+                        lineStyle: {
+                            type: 'solid',
+                            color: '#908a8a',
+                            align: 'center'
+                        }
+                    }
+                },
+
+                label: {
+                    normal: {
+                        formatter: (params) => {
+                            return '{b| ' + params.name + '} ' + '\n{hr|}\n{c|' + params.percent.toFixed(0) + '%}'
+                        },
+                        fontSize: 13,
+                        rich: {
+                            b: {
+                                lineHeight: 20,
+                                fontSize: 12,
+                                color: '#000000',
+                                align: 'center'
+
+                            },
+                            c: {
+                                lineHeight: 20,
+                                fontSize: 12,
+                                color: '#41B3DC',
+                                align: 'center'
+                            },
+                            hr: {
+                                borderColor: '#908a8a',
+                                width: '100%',
+                                borderWidth: 1,
+                                height: 0,
+                            }
+
+                        }
+                    }
+                },
+                data: data.dataAge,
+            }]
+        };
+        var myChart = echarts.init(document.getElementById('leftPie'));
+        myChart.setOption(option);
+
+    }
+
+
+
 })

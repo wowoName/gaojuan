@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+$(function() { })
 
 <head>
     <meta charset="UTF-8">
@@ -15,28 +14,60 @@
         <div class="con-top">
             <div class="item-left">
                 <div class="echarts-item">
-                    <div class="echarts-title">递归解析节点</div>
-                    <div class="echarts-main" id='main'></div>
+                    <div class="echarts-title" style="top:-5px">递归解析节点</div>
+                    <div class="echarts-main" id='leftPie'></div>
                 </div>
 
 
                 <div class="echarts-item">
                     <div class="echarts-title">解析域名总量</div>
-                    <div class="echarts-main"></div>
+                    <div class="echarts-main" id="leftBar"></div>
                 </div>
 
 
                 <div class="echarts-item">
                     <div class="echarts-title">处置</div>
-                    <div class="echarts-main"></div>
+                    <div class="echarts-map-tooltip"></div>
+                    <div class="echarts-main" id="disposalLine"></div>
                 </div>
 
             </div>
-            <div class="item-center"></div>
-            <div class="item-right"></div>
+            <div class="item-center">
+                <div class="echarts-title" style="top:-5px">每日上报域名解析量</div>
+                <div class="echarts-map-tooltip">
+                    <div class="echarts-map-tooltip-item">
+                        <span>日期</span> <span>全国总量</span>
+                    </div>
+                    <div class="echarts-map-tooltip-item">
+                        <span>01-01</span> <span class="amount">12584</span>
+                    </div>
+                    <div class="echarts-map-tooltip-item">
+                        <span>01-01</span> <span class="amount">12584</span>
+                    </div>
+                    <div class="echarts-map-tooltip-item">
+                        <span>01-01</span> <span class="amount">12584</span>
+                    </div>
+                </div>
+                <div class="item-center-map" id='centerMap'></div>
+            </div>
+            <div class="item-right">
+                <div class="echarts-item-2">
+                    <div class="echarts-title" style="top:-5px">TOP10解析量域名</div>
+                    <div class="echarts-main" id="resolutionDomain"></div>
+                </div>
+                <div class="echarts-item">
+                    <div class="echarts-title" style="top:-5px">解析趋势</div>
+                    <div class="echarts-main" id="parsingTrend"></div>
+                </div>
+            </div>
         </div>
         <div class="con-bottom">
-            <div class="item-left"></div>
+            <div class="item-left">
+                <div class="echarts-item">
+                    <div class="echarts-title" style="top:-5px">黑白名单管理</div>
+                    <div class="echarts-main" id=""></div>
+                </div>
+            </div>
             <div class="item-center">
                 <table id="parsingRanking" lay-filter="test"></table>
             </div>
@@ -46,7 +77,15 @@
     <script src="js/jquery-1.7.2.min.js"></script>
     <script src="layui/layui.all.js"></script>
     <script src="echarts/echarts.min.js"></script>
-
+    <script src=" https://gallerybox.echartsjs.com/dep/echarts/map/js/china.js"></script>
+    <!-- 中间地图 -->
+    <script src="js/map.js"></script>
+    <!-- 折线 -->
+    <script src="js/line.js"></script>
+    <!-- 右侧象形图 -->
+    <script src="js/pictorialBar.js"></script>
+    <!-- 柱状图 -->
+    <script src="js/bar.js"></script>
     <script src="js/index.js"></script>
 
 </body>
